@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Furkan ASKIN - Resume</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      color: #fff;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* Cyberpunk Neon Glow */
+    .neon-text {
+      text-transform: uppercase;
+      font-size: 2rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      background: linear-gradient(90deg, #ff7eb3, #ff758c, #ff0844);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: neon-glow 2s infinite alternate;
+    }
+
+    @keyframes neon-glow {
+      0% {
+        text-shadow: 0 0 5px #ff7eb3, 0 0 10px #ff7eb3, 0 0 20px #ff7eb3, 0 0 40px #ff7eb3, 0 0 80px #ff7eb3;
+      }
+      100% {
+        text-shadow: 0 0 10px #ff7eb3, 0 0 20px #ff7eb3, 0 0 30px #ff7eb3, 0 0 50px #ff7eb3, 0 0 100px #ff7eb3;
+      }
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Header Section */
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #00ffea;
+      margin-bottom: 20px;
+    }
+
+    /* Glitch Effect for Header */
+    header h1::before,
+    header h1::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      animation: glitch 2s infinite;
+    }
+
+    header h1::before {
+      left: 2px;
+      text-shadow: -2px 0 #ff00c1;
+      animation-delay: 0.2s;
+    }
+
+    header h1::after {
+      left: -2px;
+      text-shadow: 2px 0 #00ffea;
+      animation-delay: 0.4s;
+    }
+
+    @keyframes glitch {
+      0%, 100% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      }
+      25% {
+        clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+      }
+      50% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 0);
+      }
+      75% {
+        clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%);
+      }
+    }
+
+    /* Sections */
+    section {
+      width: 100%;
+      margin-bottom: 40px;
+      padding: 20px;
+      border: 2px solid #00ffea;
+      border-radius: 10px;
+      background: rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 10px #00ffea, 0 0 20px #00ffea;
+      transition: transform 0.3s ease-in-out;
+      position: relative;
+      overflow: hidden;
+    }
+
+    section:hover {
+      transform: scale(1.02);
+    }
+
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+      color: #ff7eb3;
+    }
+
+    section p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    section ul {
+      list-style: none;
+      padding-left: 20px;
+    }
+
+    section li {
+      position: relative;
+      margin-bottom: 10px;
+      padding-left: 20px;
+    }
+
+    section li::before {
+      content: '⚡';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #00ffea;
+    }
+
+    /* Background Grid Animation */
+    section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        90deg,
+        rgba(0, 255, 234, 0.1),
+        rgba(0, 255, 234, 0.1) 1px,
+        transparent 1px,
+        transparent 10px
+      );
+      animation: grid-scroll 5s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes grid-scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-10px);
+      }
+    }
+
+    /* Contact Form */
+    #contact {
+      text-align: center;
+    }
+
+    .contact-form {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease-in-out forwards;
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .contact-form form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form button {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      background: rgba(255, 255, 255, 0.2);
+      outline: none;
+      transform: scale(1.02);
+    }
+
+    .contact-form button {
+      background: linear-gradient(90deg, #ff7eb3, #ff758c, #ff0844);
+      color: white;
+      cursor: pointer;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+    .contact-form button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 10px #ff7eb3, 0 0 20px #ff7eb3;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.7);
+      border-top: 2px solid #00ffea;
+    }
+
+    footer a {
+      color: #00ffea;
+      text-decoration: none;
+      transition: color 0.3s ease-in-out;
+    }
+
+    footer a:hover {
+      color: #ff7eb3;
+    }
+
+    /* Matrix Rain Background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text x="0" y="50" font-size="10">01</text></svg>') repeat;
+      background-size: 20px 20px;
+      opacity: 0.1;
+      z-index: -1;
+      animation: matrix-rain 10s linear infinite;
+    }
+
+    @keyframes matrix-rain {
+      0% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(-100%);
+      }
+    }
+
+    /* Hover Effects for Links */
+    a:hover {
+      text-shadow: 0 0 5px #ff7eb3, 0 0 10px #ff7eb3, 0 0 20px #ff7eb3;
+      transition: text-shadow 0.3s ease-in-out;
+    }
+
+    /* Pulse Animation for Buttons */
+    button.pulse {
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 10px #ff7eb3, 0 0 20px #ff7eb3;
+      }
+      50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px #ff7eb3, 0 0 40px #ff7eb3;
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 10px #ff7eb3, 0 0 20px #ff7eb3;
+      }
+    }
+
+    /* Diagonal Line Background */
+    section.diagonal-bg::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        45deg,
+        rgba(0, 255, 234, 0.1),
+        rgba(0, 255, 234, 0.1) 10px,
+        transparent 10px,
+        transparent 20px
+      );
+      z-index: -1;
+      animation: diagonal-scroll 5s linear infinite;
+    }
+
+    @keyframes diagonal-scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-20px);
+      }
+    }
+
+    /* Explosion Effect */
+    .explosion {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, #ff7eb3, transparent);
+      border-radius: 50%;
+      opacity: 0;
+      animation: explode 1s ease-in-out;
+    }
+
+    @keyframes explode {
+      0% {
+        transform: scale(0);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(2);
+        opacity: 0;
+      }
+    }
+
+    /* Particle System */
+    .particle-system {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      background: #ff7eb3;
+      border-radius: 50%;
+      animation: particle-fall 5s linear infinite;
+    }
+
+    @keyframes particle-fall {
+      0% {
+        transform: translateY(-100%) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Hover Explosion */
+    section:hover .explosion-effect {
+      display: block;
+    }
+
+    .explosion-effect {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, #ff7eb3, transparent);
+      border-radius: 50%;
+      opacity: 0;
+      animation: hover-explode 0.5s ease-in-out forwards;
+    }
+
+    @keyframes hover-explode {
+      0% {
+        transform: scale(0);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(2);
+        opacity: 0;
+      }
+    }
+
+    /* Button Click Explosion */
+    button.explosion-button {
+      position: relative;
+      overflow: hidden;
+    }
+
+    button.explosion-button::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: radial-gradient(circle, #ff7eb3, transparent);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: all 0.5s ease-in-out;
+    }
+
+    button.explosion-button:active::after {
+      width: 200px;
+      height: 200px;
+      opacity: 1;
+    }
+
+    /* Floating Circles */
+    .floating-circles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .circle {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #ff7eb3;
+      border-radius: 50%;
+      animation: float 10s linear infinite;
+    }
+
+    .circle:nth-child(1) {
+      top: 10%;
+      left: 20%;
+      animation-delay: 0s;
+    }
+
+    .circle:nth-child(2) {
+      top: 30%;
+      left: 50%;
+      animation-delay: 2s;
+    }
+
+    .circle:nth-child(3) {
+      top: 50%;
+      left: 80%;
+      animation-delay: 4s;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: translateY(-50px) scale(1.2);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* Rotating Background */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, #ff7eb3, #00ffea, #ff7eb3);
+      opacity: 0.1;
+      z-index: -1;
+      animation: rotate-bg 60s linear infinite;
+    }
+
+    @keyframes rotate-bg {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Hover Pulse for Icons */
+    .icon {
+      font-size: 2rem;
+      color: #ff7eb3;
+      transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+    }
+
+    .icon:hover {
+      transform: scale(1.2);
+      color: #00ffea;
+    }
+
+    /* Animated Border */
+    .animated-border {
+      position: relative;
+      display: inline-block;
+      padding: 10px;
+    }
+
+    .animated-border::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 2px solid #ff7eb3;
+      border-radius: 10px;
+      animation: border-animate 2s infinite;
+    }
+
+    @keyframes border-animate {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    /* Text Reveal Animation */
+    .text-reveal {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .text-reveal span {
+      position: relative;
+      display: inline-block;
+      animation: reveal 1s ease-in-out;
+    }
+
+    @keyframes reveal {
+      0% {
+        transform: translateY(100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <!-- Header -->
+  <header>
+    <h1 class="neon-text" data-text="Furkan ASKIN">Furkan ASKIN</h1>
+    <p>Pilotage Student | CS Student Sophomore </p>
+  </header>
+
+  <!-- About Section -->
+  <section>
+    <h2>About Me</h2>
+    <p>am a Computer Engineering student with diverse experience across software development, web development, operations, and project management. As the Founder of YILKI Technology, I have led a multidisciplinary team in developing innovative tech solutions. My role as Web Development Project Manager at FK Textile involved overseeing web development, UI/UX design, and backend systems. In New York, I worked as a Web Development Manager at New York Food House, optimizing SEO, e-commerce, and security, and as an Operations and Financial Analyst at Salad Time, where I streamlined financial processes and revenue strategies. At New York Sabraso, I managed restaurant operations, digital marketing, and sales analytics. Additionally, my time as a Staff and Aerospace Engineering Team Coordinator at NASA in Turkey strengthened my technical expertise in aerospace projects. With a strong foundation in full-stack development, financial management, and business operations, I am passionate about technology, automation, and data-driven decision-making to drive efficiency and innovation.</p>
+  </section>
+
+  <!-- Work Experience -->
+  <section class="diagonal-bg">
+    <h2> My Work Experience</h2>
+    <ul>
+      <li><strong>Web Development Project Manager</strong> - FK Textile (2024 - Present)</li>
+      <li><strong>Monitoring and Evaluation Officer</strong> - Sabraso Restaurant, New York (2024)</li>
+      <li><strong>Web Development Manager</strong> - New York Food House (2024)</li>
+      <li><strong>Operations and Financial Analyst</strong> - Salad Time, Queens (2024)</li>
+      <li><strong>Founder</strong> - YILKI Technology (2024 - Present)</li>
+    </ul>
+  </section>
+
+  <!-- Education -->
+  <section>
+    <h2>Education</h2>
+    <ul>
+      <li><strong>Bachelor of Computer Engineering</strong> - Istinye University (2023 - Present)</li>
+      <li><strong>Cadet</strong> - Turkish Airforce Academy (2021 - 2024)</li>
+      <li><strong>Prep School</strong> - University of Mount Saint Vincent (2024)</li>
+    </ul>
+  </section>
+
+  <!-- Skills -->
+  <section>
+    <h2>Skills</h2>
+    <ul>
+      <li>Web Development: HTML, CSS, JavaScript, Node.js, Django</li>
+      <li>Programming: C++, Python, Algorithmic Skills</li>
+      <li>Financial Management & Valuations</li>
+      <li>Project Management & Team Leadership</li>
+    </ul>
+  </section>
+
+  <!-- Projects -->
+  <section>
+    <h2>Projects</h2>
+    <ul>
+      <li><strong>FK Textile Website</strong> - Modern, user-friendly website reflecting innovation and global vision.</li>
+      <li><strong>YILKI Technology</strong> - Collaborative engineering projects for national and international competitions.</li>
+    </ul>
+  </section>
+
+  <!-- Contact Section -->
+  <div class="container" id="contact">
+    <section>
+      <h2>Contact Me</h2>
+      <div class="contact-form fade-in">
+        <form action="https://formspree.io/f/xnnjvakl" method="POST">
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="email" name="email" placeholder="Your Email" required>
+          <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+          <button type="submit" class="pulse explosion-button">Send Message</button>
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>Contact me on <a href="https://www.linkedin.com/in/furkanasknn" target="_blank">LinkedIn</a> or visit my <a href="https://github.com/mach2furkan" target="_blank">GitHub</a>.</p>
+  </footer>
+
+  <!-- Explosion Effects -->
+  <div class="particle-system">
+    <div class="particle" style="top: 10%; left: 20%; animation-delay: 0s;"></div>
+    <div class="particle" style="top: 30%; left: 50%; animation-delay: 1s;"></div>
+    <div class="particle" style="top: 50%; left: 70%; animation-delay: 2s;"></div>
+    <div class="particle" style="top: 70%; left: 30%; animation-delay: 3s;"></div>
+    <div class="particle" style="top: 90%; left: 80%; animation-delay: 4s;"></div>
+  </div>
+
+  <!-- Floating Circles -->
+  <div class="floating-circles">
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+  </div>
+</div>
+</body>
+</html>
